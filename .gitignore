@@ -1,21 +1,10 @@
 # Kernel module build artifacts
 *.o
 *.ko
-*.mod
-*.mod.c
-*.mod.o
 *.cmd
 *.symvers
-modules.order
-Module.symvers
-.tmp_versions/
 *.order
-*.dwo
-*.gcno
-*.gcda
-*.gcov
+*.mod
+*.mod.c
 compile_commands.json
-
-# Editor junk
-*~
-*.swp
+shure-mv6-sync
