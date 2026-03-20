@@ -13,7 +13,7 @@
 #include <linux/slab.h>
 #include <linux/usb.h>
 
-#define SHURE_VENDOR_ID   0x14ed
+#define SHURE_VENDOR_ID 0x14ed
 #define SHURE_MV6_PRODUCT 0x1026
 
 /* UAC2 CUR request for Feature Unit 2 (mic path) on AudioControl interface 1 */
@@ -76,7 +76,6 @@ static int shure_mv6_set_mute(struct shure_mv6 *mv6, u8 mute) {
   kfree(val);
   return ret;
 }
-
 
 static ssize_t mute_show(struct device *dev, struct device_attribute *attr,
                          char *buf) {
@@ -145,8 +144,7 @@ static int shure_mv6_probe(struct hid_device *hdev,
   return 0;
 }
 
-static void shure_mv6_remove(struct hid_device *hdev)
-{
+static void shure_mv6_remove(struct hid_device *hdev) {
   device_remove_file(&hdev->dev, &dev_attr_mute);
   hid_hw_stop(hdev);
   hid_info(hdev, "Shure MV6 mute driver removed\n");
