@@ -1,0 +1,3 @@
+# Shure MV6: allow non-root users to read/write the sysfs mute attribute
+SUBSYSTEM=="hid", ATTRS{idVendor}=="14ed", ATTRS{idProduct}=="1026", \
+    RUN+="/bin/chmod 0666 /sys%p/mute"

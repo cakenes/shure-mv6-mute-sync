@@ -1,0 +1,11 @@
+[Unit]
+Description=Shure MV6 mute sync
+After=pipewire-pulse.service
+
+[Service]
+ExecStart=/usr/local/bin/shure-mv6-sync
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
