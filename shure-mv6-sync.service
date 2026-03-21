@@ -3,7 +3,7 @@ Description=Shure MV6 mute sync
 After=pipewire-pulse.service
 
 [Service]
-ExecStart=/usr/local/bin/shure-mv6-sync
+ExecStart=/usr/bin/shure-mv6-sync
 Restart=on-failure
 RestartSec=2
 
