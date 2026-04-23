@@ -32,6 +32,7 @@ static int g_last_os = -1; /* last known OS mute state */
 static int g_syncing =
     0; /* set while we are pushing a change to prevent loops */
 static volatile int g_quit = 0;
+static int g_exit_code = 0;
 
 /* ---- signal handling ---- */
 
@@ -195,6 +196,7 @@ static void context_state_cb(pa_context *c, void *ud) {
   }
   case PA_CONTEXT_FAILED:
   case PA_CONTEXT_TERMINATED:
+    g_exit_code = 1;
     g_quit = 1;
     break;
   default:
@@ -233,5 +235,5 @@ int main(void) {
   pa_context_unref(g_ctx);
   pa_mainloop_free(g_ml);
 
-  return 0;
+  return g_exit_code;
 }
