@@ -2,7 +2,7 @@ obj-m += hid-shure-mv6.o
 
 KDIR      ?= /usr/lib/modules/$(shell uname -r)/build
 MODDIR    := /usr/lib/modules/$(shell uname -r)/extra
-PULSE     := $(shell pkg-config --cflags --libs libpulse)
+PULSE      = $(shell pkg-config --cflags --libs libpulse)
 DKMS_NAME := hid-shure-mv6
 DKMS_VER  := 1.1.0
 DKMS_SRC  := /usr/src/$(DKMS_NAME)-$(DKMS_VER)
@@ -18,7 +18,7 @@ shure-mv6-sync: shure-mv6-sync.c
 module-clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
 
-	$(MAKE) -C $(KDIR) M=$(PWD) clean
+clean: module-clean
 	rm -f shure-mv6-sync
 
 # --- DKMS (recommended) ---
@@ -67,6 +67,6 @@ uninstall:
 	rm -f /usr/local/bin/shure-mv6-sync
 	rm -f /usr/lib/systemd/user/shure-mv6-sync.service
 
-.PHONY: all module clean install install-module install-daemon uninstall \
+.PHONY: all module module-clean clean install install-module install-daemon uninstall \
         dkms-install dkms-uninstall
 
